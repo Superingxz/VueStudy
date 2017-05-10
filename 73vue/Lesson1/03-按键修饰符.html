@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../../../../libs/vue/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+		<input v-on:keyup.13="submit">		
+		<!-- 同上 -->
+		<input v-on:keyup.enter="submit">
+		<!-- 缩写语法 -->
+		<input @keyup.enter="submit">		
+
+		<input @keyup.f2="submit" />		
+	</div>
+	
+
+	<input id="input" />		
+
+	<script type="text/javascript">
+		document.getElementById('input').onkeydown = function(event){
+			console.log(event.which);
+		}
+
+		Vue.config.keyCodes.a = 65;
+		Vue.config.keyCodes.f2 = 113;
+
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				counter: 0,
+				attr: 0
+			},
+			methods: {
+				submit: function(event){
+					console.log(event);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

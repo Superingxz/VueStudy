@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../../../../libs/vue/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <h1>Lily</h1> -->
+		<component1>
+			<slot name="dk"><h1>DK</h1></slot>
+			<p>Lucy</p>
+			<p>Sam</p>
+		</component1>
+
+		<component2>
+			<slot name="header"><h1>Header</h1></slot>
+			<p>Lucy</p>
+			<p>Sam</p>
+			<p slot="footer"><h1>Footer</h1></p>			
+		</component2>
+	</div>
+
+	<script type="text/javascript">
+		Vue.component('component1', {
+			template: `
+				<div>
+					<h1>Tom</h1>
+					<slot></slot>
+					<slot name="dk"></slot>
+				</div>`
+		});
+
+		Vue.component('component2', {
+			template: '\
+				<div class="container">\
+				  	<header>\
+				  		<slot name="header"></slot>\
+				  		<h2>Header</h2>\
+				  	</header>\
+				  	<main>\
+				    	<slot></slot>\
+				  	</main>\
+				  	<footer>\
+				  		<h2>Footer</h2>\
+				    	<slot name="footer"></slot>\
+				  	</footer>\
+				</div>\
+			'
+		})
+
+		var vm = new Vue({
+			el: '#app'
+		})
+	</script>
+</body>
+</html>

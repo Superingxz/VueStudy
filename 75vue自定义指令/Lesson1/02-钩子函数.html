@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../vue/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-demo="{color:'red'}">{{text}}</p>
+	</div>
+
+	<script type="text/javascript">
+		Vue.directive('demo', {
+			//被绑定元素插入父节点时调用
+			inserted: function(el){
+				console.log('inserted');
+			},
+			//只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作
+			bind: function(el, val){
+				console.log('bind');
+				el.style.color = val.value.color
+			},
+			//被绑定元素所在的模板更新时调用，而不论绑定值是否变化
+			update: function(){
+				console.log('update');
+			},
+			//被绑定元素所在模板完成一次更新周期时调用。
+			componentUpdated: function(){
+				console.log('componentUpdated');
+			},
+			unbind: function(){
+				console.log('unbind');
+			}
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				text: '钩子函数-bind'
+			}
+		})
+	</script>
+</body>
+</html>

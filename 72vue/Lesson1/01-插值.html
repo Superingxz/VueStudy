@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../../../../libs/vue/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+
+		<div id="div1">{{message}}</div>
+		<!-- 纯 HTML -->
+		<div id="div2" v-html="rawHtml"></div>
+		<!-- 属性 -->
+		<div id="div3" v-bind:id="dynamicId">
+			<img :src="src" alt="">
+		</div>
+		<!-- js 表达式 -->
+		<div id="div4">{{1 + 1}}</div>
+		
+	</div>
+	<!-- 文本 -->
+
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: 'Tom',
+				rawHtml: '<h1>Hello Sam</h1>',
+				dynamicId: 'hello',
+				src: './imgs/green.jpg'
+			}
+		})
+		// // 创建一个 Vue 实例或 "ViewModel"
+		// // 它连接 View 与 Model
+		// var app1 = new Vue({
+		// 	el: '#div1', //view
+		// 	data: { //model
+		// 		message: 'Tom'
+		// 	}
+		// })
+		// var app2 = new Vue({
+		// 	el: '#div2',
+		// 	data: {
+		// 		rawHtml: '<h1>Hello Sam</h1>'
+		// 	}
+		// })	
+		// var app3 = new Vue({
+		// 	el: '#div3',
+		// 	data: {
+		// 		dynamicId: 'hello',
+		// 		src: './imgs/green.jpg'
+		// 	}
+		// })		
+		// var app4 = new Vue({
+		// 	el: '#div4',
+		// 	data: {
+		// 		dynamicId: 'hello'
+		// 	}
+		// })					
+	</script>
+</body>
+</html>

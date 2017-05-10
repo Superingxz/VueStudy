@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../../../../libs/vue/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<keep-alive>
+			<div v-bind:is="currentView"><h3>Sam</h3></div>
+		</keep-alive>
+		<home></home>
+	</div>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				currentView: 'home'
+			},
+			components: {
+				home: { 
+					template: '<h1>Tom</h1>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

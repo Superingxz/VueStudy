@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../../../../libs/vue/vue.js"></script>
+</head>
+<body>
+	<div id="div1">
+		<h2>{{message}}</h2>
+		<h2>{{reversedMessage}}</h2>
+		<h2>{{firstName}}</h2>
+		<h2>{{lastName}}</h2>
+		<h2>{{fullName}}</h2>
+		<input type="text"  v-model="newName">
+		<input type="button" value="changeName" @click="changeName">
+	</div>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#div1',
+			data: {
+				message: 'Hello',
+				firstName:'DK',
+				lastName: 'Lan',
+				newName: ''
+			},
+			computed: {
+				//computed 这个属性是对 data 的属性进行操作或者说逻辑控制
+				// a computed getter
+				reversedMessage: function () {
+				  // `this` points to the vm instance
+				  return this.message.split('').reverse().join('')
+				},
+				fullName:{
+					get: function(){
+						console.log('get')
+						return this.firstName + ' ' + this.lastName
+					},set: function(newValue){
+						console.log('set');
+						console.log(arguments);
+						// this.firstName = newValue;
+						// var names = newValue.split(' ')
+						// this.firstName = names[0]
+						// this.lastName = names[names.length - 1]
+					}
+				}
+			},
+		    methods: {
+		    	changeName: function(){
+		    		this.fullName = this.newName;
+		    	}
+		    }
+		})
+	</script>
+</body>
+</html>
